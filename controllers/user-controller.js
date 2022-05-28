@@ -78,8 +78,54 @@ const userController = {
         .catch(err => {
             res.json(err)
         })
+    },
+
+    addFriend(req, res) {
+        User.findOneAndUpdate(
+            {
+                _id: req.params.userId
+            },
+            {
+                $push: { friends: req.params.friendId}
+            },
+            {
+                new: true, runValidators: true
+            }
+        )
+        .then(userData => {
+            if (!userData) {
+                res.status(400).json({ message: 'There is not a user with that id.' })
+                return;
+            }
+            res.json(userData)
+        })
+        .catch(err => {
+            res.json(err)
+        })
+    },
+
+    removeFriend(req, res) {
+        User.findOneAndUpdate(
+            {
+                _id: req.params.userId
+            },
+            {
+                $pull: { friends: req.params.friendId}
+            },
+            {
+                new: true
+            }
+        )
+        .then(userData => {
+            if (!userData) {
+                res.status(400).json({ message: 'There is not a user with that id.' })
+                return;
+            }
+            res.json(userData)
+        })
+        .catch(err => {
+            res.json(err)
+        })
     }
-
-
 
 }
