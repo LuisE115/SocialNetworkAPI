@@ -47,7 +47,7 @@ const userController = {
             {
                 _id: req.params.id
             },
-            body,
+            req.body,
             {
                 new: true, runValidators: true
             }
@@ -129,3 +129,5 @@ const userController = {
     }
 
 }
+
+module.exports = userController;
