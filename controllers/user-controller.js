@@ -4,10 +4,10 @@ const userController = {
     getUsers(req, res) {
         User.find({})
         .then(userData => {
-            res.json(userData);
+            res.status(200).json(userData);
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     },
 
@@ -25,20 +25,20 @@ const userController = {
         })
         .select('-__v')
         .then(userData => {
-            res.json(userData)
+            res.status(200).json(userData)
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     },
 
     newUser(req, res) {
         User.create(req.body)
         .then(userData => {
-            res.json(userData)
+            res.status(200).json(userData)
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     },
 
@@ -57,10 +57,10 @@ const userController = {
                 res.status(400).json({ message: 'There is not a user with that id.' })
                 return;
             }
-            res.json(userData)
+            res.status(200).json(userData)
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     },
 
@@ -73,10 +73,10 @@ const userController = {
                 res.status(400).json({ message: 'There is not a user with that id.' })
                 return;
             }
-            res.json(userData)
+            res.status(200).json(userData)
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     },
 
@@ -97,10 +97,10 @@ const userController = {
                 res.status(400).json({ message: 'There is not a user with that id.' })
                 return;
             }
-            res.json(userData)
+            res.status(200).json(userData)
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     },
 
@@ -121,10 +121,10 @@ const userController = {
                 res.status(400).json({ message: 'There is not a user with that id.' })
                 return;
             }
-            res.json(userData)
+            res.status(200).json(userData)
         })
         .catch(err => {
-            res.json(err)
+            res.status(500).json(err)
         })
     }
 
